@@ -1,0 +1,36 @@
+version: '3'
+services:
+  sb-matching-server:
+    build:
+      context: ./sb-matching-server
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./sb-matching-server:/app
+    depends_on: 
+      - db
+
+  db:
+    image: mysql:5.7.22
+    restart: always
+    environment: 
+      MYSQL_DATABASE: main
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    volumes: 
+      - .dbdate:/var/lib/mysql
+    ports: 
+      - 3306:3306
+
+  # front:
+  #   build:
+  #     context: ./sb-matching-app
+  #     dockerfile: Dockerfile
+  #   restart: always
+  #   volumes:
+  #     - ./node:/usr/src/app:cached
+  #   command: sh -c "cd django_front && yarn start"
+  #   ports:
+  #     - "3000:3000"
