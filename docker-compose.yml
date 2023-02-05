@@ -1,32 +1,32 @@
 version: '3'
 services:
-#  sb-matching-server:
-#    container_name: matching_server
-#    platform: linux/x86_64
-#    build:
-#      context: ./sb-matching-server
-#      dockerfile: Dockerfile
-#    ports:
-#      - 8000:8000
-#    volumes:
-#      - ./sb-matching-server:/app
-#    depends_on:
-#      - db
-#
-#  db:
-#    container_name: matching_db
-#    platform: linux/x86_64
-#    image: mysql:5.7.22
-#    restart: always
-#    environment:
-#      MYSQL_DATABASE: main
-#      MYSQL_USER: root
-#      MYSQL_PASSWORD: password
-#      MYSQL_ROOT_PASSWORD: password
-#    volumes:
-#      - .dbdate:/var/lib/mysql
-#    ports:
-#      - 3306:3306
+  sb-matching-server:
+    container_name: matching_server
+    platform: linux/x86_64
+    build:
+      context: ./sb_matching_server
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    tty: true
+    ports:
+      - 8000:8000
+    volumes:
+      - ./sb_matching_server:/app
+    depends_on:
+      - db
+
+  db:
+    container_name: matching_db
+    platform: linux/x86_64
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data      
 
   matching-app:
     container_name: matching-app
@@ -37,6 +37,6 @@ services:
     volumes:
       - ./sb-matching-app:/usr/src/app:cached
     tty: true
-#    command: sh sh-c "cd matching-app && yarn start"
+    command: sh -c "cd matching-app && npm start run"
     ports:
       - "3000:3000"
