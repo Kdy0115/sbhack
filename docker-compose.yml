@@ -31,12 +31,11 @@ services:
   matching-app:
     container_name: matching-app
     build:
-      context: ./sb-matching-app
+      context: ./matching-app
       dockerfile: Dockerfile
     restart: always
     volumes:
-      - ./sb-matching-app:/usr/src/app:cached
+      - ./matching-app:/usr/src/app:cached
     tty: true
-    command: sh -c "cd matching-app && npm start run"
     ports:
       - "3000:3000"
