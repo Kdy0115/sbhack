@@ -40,4 +40,16 @@ services:
     ports:
       - "3000:3000"
 
-  
+  mock:
+    container_name: mock-server
+    platform: linux/x86_64
+    image: mockoon/cli:latest
+    command: mockoon-cli start  --data mock.json --port 3002 # this is where the change takes place
+    working_dir: /mock_server
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./mock_server:/mock_server
+      - type: bind
+        source: ./mock_server/mock.json
+        target: /mock_server
