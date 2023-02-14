@@ -1,0 +1,15 @@
+{
+    "userinfos": [
+      { "id": 1, "name": "name1" }, 
+      { "id": 2, "name": "name2" },
+      { "id": 3, "name": "name3" }
+    ],
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicode" },
+      { "id": 2, "title": "new title", "author": "lightkun" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }

@@ -39,3 +39,20 @@ services:
     tty: true
     ports:
       - "3000:3000"
+
+  mock:
+    container_name: mock-server
+    platform: linux/x86_64
+    build: ./mock_server
+    ports:
+      - '3002:3000'
+    volumes: 
+      - ./mock_server/db.json:/data/db.json
+    command: json-server --watch db.json --host 0.0.0.0
+
+  plantuml-server:
+    container_name: plantuml
+    image: plantuml/plantuml-server
+    restart: always
+    ports:
+      - "8080:8080"
