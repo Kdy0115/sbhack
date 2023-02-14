@@ -43,13 +43,16 @@ services:
   mock:
     container_name: mock-server
     platform: linux/x86_64
-    image: mockoon/cli:latest
-    command: mockoon-cli start  --data mock.json --port 3002 # this is where the change takes place
-    working_dir: /mock_server
+    build: ./mock_server
     ports:
-      - "3002:3002"
-    volumes:
-      - ./mock_server:/mock_server
-      - type: bind
-        source: ./mock_server/mock.json
-        target: /mock_server
+      - '3002:3000'
+    volumes: 
+      - ./mock_server/db.json:/data/db.json
+    command: json-server --watch db.json --host 0.0.0.0
+
+  plantuml-server:
+    container_name: plantuml
+    image: plantuml/plantuml-server
+    restart: always
+    ports:
+      - "8080:8080"
