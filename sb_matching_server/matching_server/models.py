@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, UserManager
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
     
 class Matching(models.Model):
@@ -14,9 +14,9 @@ class Messages(models.Model):
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractUser):
 
-    username = models.CharField(max_length=100)
+    # username = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     gender = models.CharField(max_length=100)
     branch = models.CharField(max_length=100)
@@ -29,19 +29,19 @@ class CustomUser(AbstractBaseUser):
     hobby = models.CharField(max_length=100)
     matching_status = models.CharField(max_length=100)
     profile = models.CharField(max_length=100)
-    matching_id = models.ForeignKey(Matching, on_delete=models.CASCADE, related_name='user_matching_id')
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+    matching_id = models.ForeignKey(Matching, on_delete=models.CASCADE, related_name='user_matching_id', null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-    objects = UserManager()
-    # username = None
-    email = models.EmailField(('email address'), unique=True)
+    # objects = UserManager()
+    # # username = None
+    # email = models.EmailField(('email address'), unique=True)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    # USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['grade']
 
-    def __str__(self):
-        return self.user_name
+    # def __str__(self):
+    #     return self.user_name
     
 class Block(models.Model):
     user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='block_user_id')
