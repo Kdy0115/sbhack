@@ -1,0 +1,55 @@
+@startuml
+
+entity users as "users\nユーザー" {
+  + id INT(10) [PK]
+  --
+  name VARCHAR(30) [名前]
+  mail VARCHAR(30) [メールアドレス]
+  uesername VARCHAR(30) [ユーザー名]
+  gender VARCHAR(30) [性別]
+  age VARCHAR(30) [年齢]
+  grade VARCHAR(30) [年次]
+  job VARCHAR(30) [職種]
+  department VARCHAR(30) [所属]
+  project VARCHAR(1024) [プロジェクト概要]
+  introduction VARCHAR(1024) [自己紹介]
+  hobby VARCHAR(1024) [趣味]
+  password VARCHAR(30) [パスワード]
+  matching_status VARCHAR(30) [マッチングステータス]
+  profile_image VARCHAR(30) [写真のURL]
+  created_at TIMESTAMP
+  updated_at TIMESTAMP  
+  # matching_id INT(10) [FK] [マッチングID]
+}
+
+entity matching as "matching\nマッチング" {
+    + id INT(10) [PK]
+    --
+    status VARCHAR[30] [ステータス]
+    created_at TIMESTAMP
+    updated_at TIMESTAMP    
+}
+
+entity messages as "messages\nメッセージ" {
+    + id INT(10) [PK]
+    --
+    status VARCHAR[30] [ステータス]
+    created_at TIMESTAMP
+    updated_at TIMESTAMP
+    # matching_id INT(10) [FK] [マッチングID]
+    # from_user_id INT(10) [FK] [送信ユーザー]
+}
+
+entity blocks as "blocks\nブロックリスト" {
+  + id INT(10) [PK]
+  --
+  # user_id  [FK]
+  created_at TIMESTAMP
+  updated_at TIMESTAMP
+}
+
+matching ||--o{ users
+users ||--o{ blocks
+matching ||--o{ messages
+messages ||--lo{ users
+@enduml
