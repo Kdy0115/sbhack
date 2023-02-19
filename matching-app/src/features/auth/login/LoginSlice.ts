@@ -43,7 +43,7 @@ export const loginSlice = createSlice({
         },
         loginSuccess: (state, action: PayloadAction<undefined>) => {
             state.isLogining = false;
-            state.isLogining = false;
+            state.isLogined = true;
             state.isLoginFaied = false;
         },
         loginFailure: (state, action: PayloadAction<undefined>) => {

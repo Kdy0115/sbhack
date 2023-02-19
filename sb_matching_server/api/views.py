@@ -48,7 +48,7 @@ def signup(request):
 @csrf_exempt
 def login(request):
     if request.method == 'POST':
-        data = JSONParser().parse(request)
+        data = JSONParser().parse(request)['loginRequest']
         user = authenticate(
             request,
             username=data['username'],
@@ -62,4 +62,4 @@ def login(request):
                 token = Token.objects.get(user=user)
             except:
                 token = Token.objects.create(user=user)
-            return JsonResponse({'token':str(token)}, status=201)
+            return JsonResponse({'status':'OK'}, status=201)

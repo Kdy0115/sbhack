@@ -8,19 +8,14 @@ export const addLoginListener = (startListening: AppStartListening): void => {
         actionCreator: login,
         effect: async (action, { dispatch }) => {
             try {
-                console.log(action.payload);
                 const authenticated = await fetchLogin(action.payload);
-                console.log(authenticated);
-                if(authenticated) {
-                    console.log('aaaaa');
-                    // dispatch(loginSuccess());
+                if(authenticated.data.status == 'OK') {
+                    dispatch(loginSuccess());
                 } else {
-                    // dispatch(loginFailure());
-                    console.log('aaaaa');
+                    dispatch(loginFailure());
                 }
             } catch (e) {
-                // dispatch(loginFailure());
-                console.log('aaaaa');
+                dispatch(loginFailure());
             }
         }
     })
@@ -30,8 +25,7 @@ export const addLoginSuccessListener = (startListening: AppStartListening): void
     startListening({
         actionCreator: loginSuccess,
         effect: (_, { dispatch }) => {
-            const navigate = useNavigate();
-            // navigate('/home');
+            console.log('Login successful!');
         }
     })
 }
