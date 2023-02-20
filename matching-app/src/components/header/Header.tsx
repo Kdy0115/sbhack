@@ -132,74 +132,72 @@ const Header: React.FC = () => {
 
     return(
         <React.Fragment>
-        <CssBaseline />
-            <Container maxWidth="xl">
-            <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
-                  <Toolbar>
+          <CssBaseline />
+          <Box sx={{ flexGrow: 1 }}>
+              <AppBar position="static">
+                <Toolbar>
+                  <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="open drawer"
+                    sx={{ mr: 2 }}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    component="div"
+                    sx={{ display: { xs: 'none', sm: 'block' } }}
+                  >
+                    MUI
+                  </Typography>
+                  <Box sx={{ flexGrow: 1 }} />
+                  <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                      <Badge badgeContent={4} color="error">
+                        <MailIcon />
+                      </Badge>
+                    </IconButton>
                     <IconButton
                       size="large"
-                      edge="start"
+                      aria-label="show 17 new notifications"
                       color="inherit"
-                      aria-label="open drawer"
-                      sx={{ mr: 2 }}
                     >
-                      <MenuIcon />
+                      <Badge badgeContent={17} color="error">
+                        <NotificationsIcon />
+                      </Badge>
                     </IconButton>
-                    <Typography
-                      variant="h6"
-                      noWrap
-                      component="div"
-                      sx={{ display: { xs: 'none', sm: 'block' } }}
+                    <IconButton
+                      size="large"
+                      edge="end"
+                      aria-label="account of current user"
+                      aria-controls={menuId}
+                      aria-haspopup="true"
+                      onClick={handleProfileMenuOpen}
+                      color="inherit"
                     >
-                      MUI
-                    </Typography>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                      <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                        <Badge badgeContent={4} color="error">
-                          <MailIcon />
-                        </Badge>
-                      </IconButton>
-                      <IconButton
-                        size="large"
-                        aria-label="show 17 new notifications"
-                        color="inherit"
-                      >
-                        <Badge badgeContent={17} color="error">
-                          <NotificationsIcon />
-                        </Badge>
-                      </IconButton>
-                      <IconButton
-                        size="large"
-                        edge="end"
-                        aria-label="account of current user"
-                        aria-controls={menuId}
-                        aria-haspopup="true"
-                        onClick={handleProfileMenuOpen}
-                        color="inherit"
-                      >
-                        <AccountCircle />
-                      </IconButton>
-                    </Box>
-                    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                      <IconButton
-                        size="large"
-                        aria-label="show more"
-                        aria-controls={mobileMenuId}
-                        aria-haspopup="true"
-                        onClick={handleMobileMenuOpen}
-                        color="inherit"
-                      >
-                        <MoreIcon />
-                      </IconButton>
-                    </Box>
-                  </Toolbar>
-                </AppBar>
-                {renderMobileMenu}
-                {renderMenu}
-            </Box>
-        </Container>
+                      <AccountCircle />
+                    </IconButton>
+                  </Box>
+                  <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                    <IconButton
+                      size="large"
+                      aria-label="show more"
+                      aria-controls={mobileMenuId}
+                      aria-haspopup="true"
+                      onClick={handleMobileMenuOpen}
+                      color="inherit"
+                    >
+                      <MoreIcon />
+                    </IconButton>
+                  </Box>
+                </Toolbar>
+              </AppBar>
+              {renderMobileMenu}
+              {renderMenu}
+          </Box>
     </React.Fragment>
     )
 };
