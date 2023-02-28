@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 import * as constants from './constants';
-import { AuthRequest, Status } from './entities';
+import { AuthRequest, Status, BaseUserResponse } from './entities';
 
 const client = axios.create({
     baseURL: constants.API_BASE_URL,
@@ -16,3 +16,9 @@ export const fetchLogin = async (loginRequest: AuthRequest): Promise<AxiosRespon
             loginRequest
         }
     );
+
+export const fetchUserById = async (userId: string): Promise<AxiosResponse<BaseUserResponse>> =>
+    await client.get(
+        `/user/${userId}`,
+        { headers: { Authorization:  } }
+    )
