@@ -9,6 +9,8 @@ const client = axios.create({
     withCredentials: false,
 })
 
+const token = localStorage.getItem('token');
+
 export const fetchLogin = async (loginRequest: AuthRequest): Promise<AxiosResponse<Status>> =>
     await client.post(
         '/login',
@@ -20,5 +22,9 @@ export const fetchLogin = async (loginRequest: AuthRequest): Promise<AxiosRespon
 export const fetchUserById = async (userId: string): Promise<AxiosResponse<BaseUserResponse>> =>
     await client.get(
         `/user/${userId}`,
-        { headers: { Authorization:  } }
-    )
+        { 
+            headers: { 
+                Authorization: `Token ${token}`
+            } 
+        }
+    );
