@@ -11,5 +11,6 @@ urlpatterns = [
     path('user/<int:pk>', UserRetrieveUpdateDestroy.as_view()),
     path('signup', signup),
     path('login', views.login),
+    path('test2'),
     path('test'),
 ]
