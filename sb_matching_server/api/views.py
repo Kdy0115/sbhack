@@ -62,4 +62,11 @@ def login(request):
                 token = Token.objects.get(user=user)
             except:
                 token = Token.objects.create(user=user)
-            return JsonResponse({'status':'OK'}, status=201)
+            return JsonResponse({'token':str(token)}, status=201)
+        
+# @csrf_exempt
+# def get_token(request, user_id):
+#     if request.method == 'POST':
+#         data = JSONParser().parse(request)
+
+        

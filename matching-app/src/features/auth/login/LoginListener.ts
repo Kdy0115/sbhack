@@ -8,8 +8,10 @@ export const addLoginListener = (startListening: AppStartListening): void => {
         actionCreator: login,
         effect: async (action, { dispatch }) => {
             try {
-                const authenticated = await fetchLogin(action.payload);
-                if(authenticated.data.status == 'OK') {
+                const response = await fetchLogin(action.payload);
+                const token = response.data;
+                document.cookie = `token=${token}; path=/`;
+                if(response.data.token == 'OK') {
                     dispatch(loginSuccess());
                 } else {
                     dispatch(loginFailure());

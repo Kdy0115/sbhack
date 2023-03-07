@@ -40,5 +40,5 @@ export interface AuthUserResponse extends BaseUserResponse {
 }
 
 export interface Status {
-    status: string;
+    token: string;
 }

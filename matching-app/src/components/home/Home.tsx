@@ -2,7 +2,7 @@ import React from "react";
 
 import Header from "../header/Header";
 import HomeContents from "./HomeContents";
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const mdTheme = createTheme();
 

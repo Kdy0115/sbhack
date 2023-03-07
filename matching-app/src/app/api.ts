@@ -11,6 +11,16 @@ const client = axios.create({
 
 const token = localStorage.getItem('token');
 
+export const fetchToken = async(userId: string): Promise<AxiosResponse<Status>> =>
+    await client.post(
+        `/user/token/${userId}`,
+        {
+            headers: { 
+                Authorization: `Token ${token}`
+            } 
+        }
+    )
+
 export const fetchLogin = async (loginRequest: AuthRequest): Promise<AxiosResponse<Status>> =>
     await client.post(
         '/login',
