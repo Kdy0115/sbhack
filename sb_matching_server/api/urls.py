@@ -13,5 +13,5 @@ urlpatterns = [
     path('login', views.login),
     path('test5'),
     path('test2'),
-    path('path31'),
+    path('path3'),
 ]
