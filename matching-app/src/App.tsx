@@ -4,6 +4,7 @@ import './App.css';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home';
+import StartMatching from './components/matching/Matching';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/matching" element={<StartMatching/>}/>
       </Routes>
     </BrowserRouter>
   );
