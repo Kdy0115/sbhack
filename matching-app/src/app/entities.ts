@@ -17,12 +17,11 @@ export interface AuthRequest {
 
 export interface BaseUserResponse {
     id              : number;
+    email           : string;
+    gender          : string;
+    username        : string;
     first_name      : string;
     last_name       : string;
-    email           : string;
-    username        : string;
-    name            : string;
-    gender          : string;
     branch          : string;
     age             : string;
     grade           : number;
@@ -31,6 +30,7 @@ export interface BaseUserResponse {
     project         : string;
     introduction    : string;
     hobby           : string;
+    matching_status : string;
     profile         : string;
 }
 

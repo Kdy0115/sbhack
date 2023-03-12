@@ -1,4 +1,4 @@
-from .serializers import UserSerializer
+from .serializers import UserSerializer, AuthUserSerializer
 from matching_server.models import CustomUser
 from rest_framework import generics, permissions
 from django.db import IntegrityError
@@ -8,24 +8,35 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 
-class UserListCreate(generics.ListCreateAPIView):
+class UserList(generics.ListAPIView):
     serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return CustomUser.objects.all()
+    
+    # def perform_create(self, serializer):
+    #     serializer.save(self.request.user)
+
+class UserRetrieve(generics.RetrieveAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return CustomUser.objects.filter(pk=user.id)    
+
+class AuthUserRetrieveUpdate(generics.RetrieveUpdateAPIView):
+    serializer_class = AuthUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
         return CustomUser.objects.filter(pk=user.id)
     
-    def perform_create(self, serializer):
-        serializer.save(self.request.user)
-
-class UserRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_queryset(self):
-        user = self.request.user
-        return CustomUser.objects.filter(pk=user.id)
+    def perform_update(self, serializer):
+        instance = serializer.save()    
 
 @csrf_exempt
 def signup(request):

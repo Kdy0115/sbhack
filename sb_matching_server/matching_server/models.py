@@ -27,7 +27,7 @@ class CustomUser(AbstractUser):
     project = models.CharField(max_length=100)
     introduction = models.CharField(max_length=100)
     hobby = models.CharField(max_length=100)
-    matching_status = models.CharField(max_length=100)
+    matching_status = models.CharField(max_length=100, default='unmatch')
     profile = models.CharField(max_length=100)
     matching_id = models.ForeignKey(Matching, on_delete=models.CASCADE, related_name='user_matching_id', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
