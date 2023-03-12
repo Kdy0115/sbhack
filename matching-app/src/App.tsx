@@ -9,9 +9,9 @@ const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isLogined } = useAppSelector((state) => state.login);
 
-  if(!isLogined) {
-    return <Login />;
-  }
+  // if(!isLogined) {
+  //   return <Login />;
+  // }
 
   return (
     <BrowserRouter>
