@@ -4,6 +4,8 @@ import './App.css';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home';
+import ConfirmMatching from './components/confirm_matching/ConfirmMatching';
+
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +20,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/confirm_matching" element={<ConfirmMatching />}/>
       </Routes>
     </BrowserRouter>
   );
