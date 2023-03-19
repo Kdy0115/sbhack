@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItemText, Box, Typography, Grid, ListItem } from '@mui/material';
+import { ListItemText, Box, Typography, Grid, ListItem, Card } from '@mui/material';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { UserMessage } from '../../app/entities';
@@ -22,24 +22,28 @@ const OtherUserMessage: React.FC<OtherUserProps> = (userMessageProps:OtherUserPr
                         <ListItemAvatar>
                             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                         </ListItemAvatar>
-                        <ListItemText 
-                            primary={
-                                <React.Fragment>
-                                    <Typography>{ userMessageProps.userMessage.user.username }</Typography>
-                                </React.Fragment>
-                            }
-                            secondary={
-                                <React.Fragment>
-                                  <Typography
-                                    sx={{ display: 'inline' }}
-                                    variant="body1"
-                                    color="text.primary"
-                                  >
-                                    { userMessageProps.userMessage.message }
-                                  </Typography>
-                                </React.Fragment>
-                            }
-                        />
+                            <ListItemText
+                                primary={
+                                    <React.Fragment>
+                                        <Typography>{ userMessageProps.userMessage.user.username }</Typography>
+                                    </React.Fragment>
+                                }
+                                secondary={
+                                    <React.Fragment>
+                                        <Card>
+                                            <Grid container sx={{ padding: 1.5 }}>
+                                                <Typography
+                                                  sx={{ display: 'inline' }}
+                                                  variant="body1"
+                                                  color="text.primary"
+                                                >
+                                                  { userMessageProps.userMessage.message }
+                                                </Typography>
+                                            </Grid>
+                                        </Card>
+                                    </React.Fragment>
+                                }
+                            />
                         <Typography color="text.secondory" variant='body2'>{ userMessageProps.userMessage.datetime }</Typography>
                     </Box>
                 </ListItem>

@@ -130,6 +130,7 @@ export interface MessageState {
     isLoaded: boolean;
     isSending: boolean;
     isSent: boolean;
+    isShowModal: boolean;
     
 }
 
@@ -146,6 +147,7 @@ const initialState: MessageState = {
     isLoaded: false,
     isSending: false,
     isSent: false,
+    isShowModal: false
 };
 
 export const messageSlice = createSlice({
@@ -168,7 +170,13 @@ export const messageSlice = createSlice({
         },
         changeNewMessage: (state, action:PayloadAction<string>) => {
             state.entities.newMessageRequest.message = action.payload;
-        }
+        },
+        showLeaveGroupModal: (state) => {
+            state.isShowModal = true;
+        },
+        hideLeaveGroupModal: (state) => {
+            state.isShowModal = false;
+        }        
     }
 });
 
@@ -177,6 +185,8 @@ export const {
     sendMessageSuccess,
     sendMessageFailure,
     changeNewMessage,
+    showLeaveGroupModal,
+    hideLeaveGroupModal,
 
 } = messageSlice.actions;
 

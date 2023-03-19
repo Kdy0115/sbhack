@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItemText, Box, Typography, Grid, ListItem } from '@mui/material';
+import { ListItemText, Box, Typography, Grid, ListItem, Card } from '@mui/material';
 import { UserMessage } from '../../app/entities';
 
 interface MyUserMessageProps {
@@ -33,9 +33,9 @@ const MyUserMessage: React.FC<MyUserMessageProps> = (myUserMessageProps: MyUserM
                 </ListItem>
             </Grid>
             <Grid item xs={12} md={6}>
-                <ListItem sx={{display:'flex', justifyContent:'flex-end'}}>
+                <ListItem sx={{display:'flex', justifyContent:'flex-end' }}>
                     <Box>
-                        <ListItemText 
+                        <ListItemText
                             primary={
                                 <React.Fragment>
                                     <Typography />
@@ -43,17 +43,21 @@ const MyUserMessage: React.FC<MyUserMessageProps> = (myUserMessageProps: MyUserM
                             }
                             secondary={
                                 <React.Fragment>
-                                  <Typography
-                                    sx={{ display: 'inline' }}
-                                    variant="body1"
-                                    color="text.primary"
-                                  >
-                                        { myUserMessageProps.userMessage.message }
-                                    </Typography>
+                                    <Card>
+                                        <Grid container sx={{ padding: 1.5 }}>
+                                            <Typography
+                                              sx={{ display: 'inline' }}
+                                              variant="body1"
+                                              color="text.primary"
+                                            >
+                                                  { myUserMessageProps.userMessage.message }
+                                              </Typography>
+                                        </Grid>
+                                    </Card>
                                 </React.Fragment>
                             }
                         />
-                        <Typography color="text.secondory" variant='body2' >{ myUserMessageProps.userMessage.datetime }</Typography>
+                        <Typography color="text.secondory" variant='body2' sx={{display:'flex', justifyContent:'flex-end'}}>{ myUserMessageProps.userMessage.datetime }</Typography>
                     </Box>
                 </ListItem>
             </Grid>

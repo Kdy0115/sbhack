@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import Header from '../header/Header';
 import MessagesList from './MessagesList';
 import { useAppSelector } from '../../app/hooks';
+import LeaveGroupModal from './modal/LeaveGroupModal';
 
 const mdTheme = createTheme();
 
@@ -14,6 +15,7 @@ const Messages: React.FC = () => {
         <ThemeProvider theme={mdTheme}>
             <Header />
             <MessagesList />
+            <LeaveGroupModal />
         </ThemeProvider>
     );
 }   

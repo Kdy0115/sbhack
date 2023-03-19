@@ -13,7 +13,9 @@ const MessagesList: React.FC = () => {
 
 
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
     }, [messages]);
 
     return (
@@ -24,9 +26,9 @@ const MessagesList: React.FC = () => {
                         {messages.map((item) => (
                             <MessagesContents userMessage={item}/>
                         ))}
+                        <div ref={messagesEndRef} />
                     </List>
                 </Paper>
-                <div ref={messagesEndRef} />
                 <MessageTools />
             </Grid>
         </Box>
