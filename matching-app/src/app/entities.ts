@@ -42,3 +42,15 @@ export interface AuthUserResponse extends BaseUserResponse {
 export interface Status {
     token: string;
 }
+
+export interface UserMessage {
+    user: BaseUserResponse;
+    message: string;
+    datetime: string;
+}
+
+export interface MessageRequest {
+    sendUserId: number;
+    message: string; 
+    datetime: string;
+}
