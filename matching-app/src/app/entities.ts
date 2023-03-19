@@ -47,5 +47,10 @@ export interface UserMessage {
     user: BaseUserResponse;
     message: string;
     datetime: string;
-    noData: boolean;
+}
+
+export interface MessageRequest {
+    sendUserId: number;
+    message: string; 
+    datetime: string;
 }
