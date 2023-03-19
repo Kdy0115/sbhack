@@ -1,15 +1,18 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { loginSliceReducer, LoginState } from '../features/auth/login/LoginSlice';
+import { matchingSliceReducer, MatchingState } from '../features/matching/MatchingSlice';
 import { messageSliceReducer, MessageState } from '../features/messages/MessageSlice';
 import listener from './listener';
 
 export interface RootState {
   login: LoginState;
+  matching: MatchingState;
   message: MessageState;
 }
 
 export const rootReducer = combineReducers<RootState>({
   login: loginSliceReducer,
+  matching: matchingSliceReducer,
   message: messageSliceReducer,
 });
 
