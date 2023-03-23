@@ -12,11 +12,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useNavigate } from 'react-router-dom';
 
 const pages = ['Matching', 'Messages'];
 const settings = ['Profile', 'Logout'];
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -114,15 +117,20 @@ const Header: React.FC = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+            <Button
+                key='matching'
+                onClick={ () => { navigate('/matching'); }}
                 sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            >
+                matching
+            </Button>
+            <Button
+              key='message'
+              onClick={ () => { navigate('/message'); }}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              message
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
