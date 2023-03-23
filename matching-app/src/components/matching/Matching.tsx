@@ -15,7 +15,6 @@ const Matching: React.FC = () => {
     if(isMatching) {
         return (
             <ThemeProvider theme={mdTheme}>
-                <Header />
                 <MatchingLoading />
             </ThemeProvider>
         );

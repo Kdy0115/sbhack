@@ -20,16 +20,20 @@ const MatchingLoading: React.FC = () => {
           {...(isMatching ? { timeout: 1000 } : {})}
         >
             <Container> 
-                <Box sx={{ mt:10, width: '100%' }}>
-                    <Typography variant="h3" gutterBottom>
-                        マッチング中
-                    </Typography>
-                </Box>
-                <Box sx={{ display: 'flex' }}>
-                        <CircularProgress />
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: 30 }}>
+                    <CircularProgress size={200}/>
+                    <Box
+                        sx={{ mt: 11 }}
+                        position="absolute"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                    >
+                        <Typography variant="h5" component="div" color="textSecondary">matching...</Typography>
+                    </Box>      
                 </Box>            
-                <Box sx={{ mt:10 }}>
-                    <Button variant="contained" onClick={() => dispatch(backStartMatching())}>中断</Button>
+                <Box sx={{ mt:30, justifyContent: 'center', display: 'flex' }}>
+                    <Button variant="text"  color='warning' onClick={() => dispatch(backStartMatching())}>Reset</Button>
                 </Box>
             </Container>  
         </Grow> 

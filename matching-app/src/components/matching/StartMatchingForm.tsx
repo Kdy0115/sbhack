@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeMatchingNumber, changeMatchingTime, startMatching } from '../../features/matching/MatchingSlice';
 import Grow from '@mui/material/Grow';
 import Slide from '@mui/material/Slide';
+import { Grid } from '@mui/material';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -64,7 +65,7 @@ const MatchingForm: React.FC = () => {
           {...(true ? { timeout: 500 } : {})}
         >
           <Container>
-              <Box sx={{ mt:10 }}>
+              <Box sx={{ mt:20 }}>
                   <FormControl fullWidth>
                       <InputLabel id="matching-number-label">人数</InputLabel>
                       <Select
@@ -112,8 +113,8 @@ const MatchingForm: React.FC = () => {
                       </Select>
                   </FormControl>                
               </Box>            
-              <Box sx={{ mt:10 }}>
-                <Button variant="contained" onClick={() => dispatch(startMatching(matchingInfo))}>Start</Button>
+              <Box sx={{ mt:10, justifyContent: 'center', display: 'flex'}}>
+                <Button variant="contained" sx={{ height:50, width:300, borderRadius: 5 }} onClick={() => dispatch(startMatching(matchingInfo))}>Matching</Button>
               </Box>
           </Container>   
         </Slide>       
@@ -127,7 +128,7 @@ const MatchingForm: React.FC = () => {
       {...(true ? { timeout: 1000 } : {})}
       >
         <Container>
-            <Box sx={{ mt:10 }}>
+            <Box sx={{ mt:20 }}>
                 <FormControl fullWidth>
                     <InputLabel id="matching-number-label">人数</InputLabel>
                     <Select
@@ -175,11 +176,11 @@ const MatchingForm: React.FC = () => {
                     </Select>
                 </FormControl>                
             </Box>            
-            <Box sx={{ mt:10 }}>
-              <Button variant="contained" onClick={() => dispatch(startMatching(matchingInfo))}>Start</Button>
+            <Box sx={{ mt:10, justifyContent: 'center', display: 'flex'}}>
+                <Button variant="contained" sx={{ height:50, width:300, borderRadius: 5 }} onClick={() => dispatch(startMatching(matchingInfo))}>Matching</Button>
             </Box>
-        </Container>   
-      </Grow>       
+        </Container>
+      </Grow>
     );
 }
 
